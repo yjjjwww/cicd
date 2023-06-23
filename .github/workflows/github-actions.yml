@@ -1,0 +1,12 @@
+name: github-actions
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Branch
+        run: echo "Current branch is ${GITHUB_REF#refs/heads/}"
