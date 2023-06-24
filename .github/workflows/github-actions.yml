@@ -28,7 +28,7 @@ jobs:
           docker push ${{ secrets.DOCKER_REPO }}/cicd-web
 
       - name: executing remote ssh commands using password
-        uses: yjjjwww/cicd@main
+        uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ubuntu
