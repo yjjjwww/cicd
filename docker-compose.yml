@@ -1,6 +1,5 @@
 version: '3'
 services:
-
   web:
     container_name: web
     image: yjjjwww/cicd-web
@@ -8,7 +7,6 @@ services:
       - 8080
     ports:
       - 8080:8080
-
   nginx:
     container_name: nginx
     image: yjjjwww/cicd-nginx

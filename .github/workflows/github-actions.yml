@@ -24,7 +24,7 @@ jobs:
       - name: web docker build and push
         run: |
           docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker build -t ${{ secrets.DOCKER_REPO }}/cicd-web .
+          docker build --platform amd64 --build-arg DEPENDENCY=build/dependency -t ${{ secrets.DOCKER_REPO }}/cicd-web .
           docker push ${{ secrets.DOCKER_REPO }}/cicd-web
 
       - name: executing remote ssh commands using password
@@ -37,6 +37,5 @@ jobs:
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_REPO }}/cicd-web
             sudo docker pull ${{ secrets.DOCKER_REPO }}/cicd-nginx
-            sudo docker run -d -p 8080:8080 ${{ secrets.DOCKER_REPO }}/cicd-web
-            sudo docker run -d -p 80:80 ${{ secrets.DOCKER_REPO }}/cicd-nginx
+            sudo docker-compose up -d
             sudo docker image prune -f
