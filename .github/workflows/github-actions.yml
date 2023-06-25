@@ -37,5 +37,6 @@ jobs:
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_REPO }}/cicd-web
             sudo docker pull ${{ secrets.DOCKER_REPO }}/cicd-nginx
-            sudo docker-compose up -d
+            sudo docker run -d -p 8080:8080 ${{ secrets.DOCKER_REPO }}/cicd-web
+            sudo docker run -d -p 80:80 ${{ secrets.DOCKER_REPO }}/cicd-nginx
             sudo docker image prune -f
