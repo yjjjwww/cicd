@@ -3,7 +3,6 @@ services:
   web:
     container_name: web
     image: yjjjwww/cicd-web
-    expose:
-      - 8080
+    restart: always
     ports:
       - 8080:8080
