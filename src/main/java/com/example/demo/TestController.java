@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
   @GetMapping
   public ResponseEntity<String> getArticleByPageable() {
-    return ResponseEntity.ok().body("Hello!0-----0-");
+    return ResponseEntity.ok().body("이게 보이면 성공");
   }
 }
