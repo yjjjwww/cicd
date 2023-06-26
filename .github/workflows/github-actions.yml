@@ -44,6 +44,8 @@ jobs:
           username: ubuntu
           key: ${{ secrets.KEY }}
           script: |
+            pwd
+            ls -al
             sudo chmod 666 /var/run/docker.sock
             sudo docker rm -f $(docker ps -qa)
             sudo docker pull ${{ secrets.DOCKER_REPO }}/cicd-web
